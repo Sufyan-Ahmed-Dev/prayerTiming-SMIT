@@ -6,16 +6,18 @@ let tableRow = document.querySelector("#rows");
 inputForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   let getCityName = input.value;
-  // console.log(getCityName)
+
   var currentDate = new Date();
-  // const formattedDate = currentDate.toISOString().split('T')[0];
 
   try {
     const res = await axios.get(
       `https://api.aladhan.com/v1/timingsByAddress/${currentDate}?address=${getCityName}`
     );
     let getData = res.data.data.timings;
-    tableRow.innerHTML = " ";
+    tableRow.innerHTML = "";
+    // console.log(res)
+    console.log(res?.data?.data?.meta?.latitude);
+    console.log(res?.data?.data?.meta?.longitude);
 
     Object.entries(getData).forEach(([key, value]) => {
       console.log(`${key}: ${value}`);
@@ -34,7 +36,4 @@ inputForm.addEventListener("submit", async (e) => {
   } catch (err) {
     console.log(err);
   }
-  // https://muslimsalat.com/lahore.json
 });
-
-// console.log(axios)
