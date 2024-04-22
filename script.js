@@ -31,9 +31,11 @@ inputForm.addEventListener("submit", async (e) => {
        
     </tr>`;
     });
+    input.value = ""
 
     console.log(getData);
   } catch (err) {
     console.log(err);
   }
+
 });
